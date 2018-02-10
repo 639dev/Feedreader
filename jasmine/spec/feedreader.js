@@ -8,10 +8,10 @@ $(function() {
     });
 
     it('has its own non empty url', function() {
-      for (var i = 0; i < allFeeds.length; i++) {
-        expect(allFeeds[i].url).toBeDefined();
-        expect(allFeeds[i].url).not.toBe("");
-      }
+      allFeeds.forEach(function(feed){
+        expect(feed.url).toBeDefined();
+        expect(feed.url).not.toBe("");
+      });
     });
 
     it('has its own non empty name', function() {
@@ -45,8 +45,8 @@ $(function() {
     });
 
     //ref: https://stackoverflow.com/questions/24090270/how-can-i-test-that-a-value-is-greater-than-or-equal-to-in-jasmine
-    it('should grab initial contacts', function() {
-      var entries = $('.entry').length;
+    it('should grab feeds', function() {
+      var entries = $('.feed .entry').length;
       expect(entries).toBeGreaterThan(0);
     });
 
@@ -62,7 +62,7 @@ $(function() {
         });
       });
     });
-    it('differ', function() {
+    it('load new feed each time', function() {
       expect($('.feed').html()).not.toEqual(feed0);//calling $('.feed').html() will bring the second feed added
     });
 
