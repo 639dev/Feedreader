@@ -29,8 +29,7 @@ $(function() {
     });
 
     it('be visible when the icon clicked', function() {
-      var spyEvent = spyOnEvent('.menu-icon-link', 'click');
-      $('.menu-icon-link').click();
+      $('.menu-icon-link').click(); //clicking the icon will toggle menu-hidden class on body tag,causing the hiding/unhiding each time.
       expect($('body')).not.toHaveClass('menu-hidden');
       $('.menu-icon-link').click();
       expect($('body')).toHaveClass('menu-hidden');
@@ -57,14 +56,14 @@ $(function() {
     var feed0;
     beforeEach(function(done) {
       loadFeed(0, function() {
-        feed0 = $('.feed').html();
-        loadFeed(1, function() {
+        feed0 = $('.feed').html();//storing first data in the variable
+        loadFeed(1, function() { // call for the second feed
           done();
         });
       });
     });
     it('differ', function() {
-      expect($('.feed').html()).not.toEqual(feed0);
+      expect($('.feed').html()).not.toEqual(feed0);//calling $('.feed').html() will bring the second feed added
     });
 
   });
